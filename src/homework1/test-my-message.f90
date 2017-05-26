@@ -24,7 +24,6 @@ program main
 
     test_image_number: block
       !! Verify image number location in my_message result
-      use my_message_interface, only : my_message
       integer :: image
       character(len=:), allocatable :: constructed_message,pretext
 
