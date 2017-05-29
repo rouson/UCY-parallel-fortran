@@ -2,8 +2,8 @@ UCY-parallel-fortran
 ====================
 Code jams and homework exercises for Parallel Programming in Modern Fortran course at the University of Cyprus
 
-[Homework 1](#homework-1) &middot;
-[Homework 2](#homework-2) &middot;
+1. [Homework 1](#homework-1)
+2. [Homework 2](#homework-2)
 
 Homework 1
 ----------
@@ -32,4 +32,3 @@ In this assignment, you will use the co_sum collective subroutine to sum integer
 ```
 - [ ] Search for "Assignment" src/homework2/procedural_fireworks/main.f90 and complete the listed steps.
 - [ ] Bring your instructor a frappe to receive an A for the day.
-----------
