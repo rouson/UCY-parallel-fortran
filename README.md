@@ -31,4 +31,10 @@ In this assignment, you will use the co_sum collective subroutine to sum integer
   make install
 ```
 - [ ] Complete the steps listed after the text "Assignment" in the file src/homework2/procedural_fireworks/main.f90
+- [ ] With your working directory set to `src/homework2/procedural_fireworks`, build and run the application using the `make` utility:
+```bash
+  make 
+  cafrun -n 4 ./procedural_fireworks < fireworks_input.txt
+```
+which executes `procedural_fireworks` in 4 images and redirects the standard input to the file `fireworks_intput.txt`.
 - [ ] Bring your instructor a frappe to receive an A for the day.
