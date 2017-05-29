@@ -26,9 +26,9 @@ In this assignment, you will use the co_sum collective subroutine to sum integer
 - [ ] Fork this repository by clicking "Fork" in the upper right corner of the browser page (don't click the number next to "Fork")
 - [ ] Clone your fork and install the sourcery library:
 ```bash
-  git clone https:github.com/sourceryinstitute/UCY-parallel-fortran-<instert-your-github-username-here>
-  cd UCY-parallel-fortran-<instert-your-github-username-here>/src/homework2/library
+  git clone https:github.com/<your-github-username>/UCY-parallel-fortran
+  cd UCY-parallel-fortran/src/homework2/library
   make install
 ```
-- [ ] Search for "Assignment" src/homework2/procedural_fireworks/main.f90 and complete the listed steps.
+- [ ] Complete the steps listed after the text "Assignment" in the file src/homework2/procedural_fireworks/main.f90
 - [ ] Bring your instructor a frappe to receive an A for the day.
