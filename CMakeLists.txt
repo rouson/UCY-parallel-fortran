@@ -56,5 +56,35 @@ add_subdirectory(src)
 
 enable_testing()
 
+# We invoke these tests via bash scripts that redirect standard input to a file and that echo the program output 
+# to the script's standard output stream.
 add_test(my_message_test ${CMAKE_CURRENT_SOURCE_DIR}/src/homework1-refactored/run-my-message-test.sh)
 set_property(TEST my_message_test PROPERTY PASS_REGULAR_EXPRESSION "Test passed.")
+
+add_test(homework1_solution ${CMAKE_CURRENT_SOURCE_DIR}/src/solutions/homework1/run-homework1-solution.sh)
+set_property(TEST homework1_solution PROPERTY PASS_REGULAR_EXPRESSION "Test passed.")
+
+# All other tess will be defined via add_mpi_test below from OpenCoarrays (https://github.com/sourceryinstitute/opencoarrays)
+include( ProcessorCount )
+ProcessorCount(N)
+function(add_mpi_test name num_mpi_proc path)
+   if ( ((N LESS num_mpi_proc) OR (N EQUAL 0)) )
+     message(STATUS "Test ${name} is oversubscribed: ${num_mpi_proc} ranks requested with ${N} system processor available.")
+     if ( openmpi )
+       if ( N LESS 2 )
+         set( num_mpi_proc 2 )
+         set (test_parameters --oversubscribe)
+       else()
+         set ( num_mpi_proc ${N} )
+       endif()
+       message( STATUS "Open-MPI detected, over-riding oversubscribed test, ${name}, with ${num_mpi_proc} ranks." )
+     endif()
+   endif()
+   set(test_parameters ${test_parameters} ${MPIEXEC_NUMPROC_FLAG} ${num_mpi_proc} )
+   add_test(NAME ${name} COMMAND ${MPIEXEC} ${test_parameters} "${path}")
+   set_property(TEST ${name} PROPERTY PASS_REGULAR_EXPRESSION "Test passed.")
+endfunction(add_mpi_test)
+
+set(tests_root ${CMAKE_CURRENT_BINARY_DIR}/src/tests)
+
+add_mpi_test(homework2_solution procedural-fireworks 4 src/solutions/homework2/procedural_fireworks)

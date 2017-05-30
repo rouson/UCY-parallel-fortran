@@ -1,0 +1,4 @@
+&fireworks_properties num_stars = 10, star_mass=0.001 , star_radius=0.2 /
+&timeline t=1.,t_final=48.,dt=1./
+&sky_properties sea_level_temperature=293.15, reference_wind_speed=10., reference_wind_height=10. /
+&debugging verbose=T /

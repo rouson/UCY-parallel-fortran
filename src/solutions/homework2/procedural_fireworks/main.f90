@@ -84,9 +84,21 @@ program main
   ! 1. In a new block labeled integration_test, declare an integer variable image_failed and set it to 
   !     {  0 if .true. is the logical result of the function reference reached_terminal_velocity(x,v,response_time,tolerance)
   !     {  1 otherwise
-  ! 2. Use the co_sum collective subroutine to sum the number of image failures, providing the result to image 1 only.   
+  ! 2. Use the co_sum collective subroutine to sum the number of image failures.   
   ! 3. Error terminate if the sum is non-zero.
   ! 4. Otherwise, print "Test passed."
+
+  integration_test: block 
+    use iso_fortran_env, only : error_unit
+    integer :: num_failures
+    num_failures = merge(0,1,reached_terminal_velocity(x,v,response_time,tolerance))
+    call co_sum(num_failures,result_image=1)
+    if (this_image()==1) then
+      write(error_unit,*) num_failures," images failed "
+      if (num_failures/=0) error stop
+      print *,"Test passed..........................................."
+    end if
+  end block integration_test
 
 contains
 
