@@ -4,6 +4,7 @@ Code jams and homework exercises for Parallel Programming in Modern Fortran cour
 
 1. [Homework 1](#homework-1)
 2. [Homework 2](#homework-2)
+2. [Homework 3](#homework-3)
 
 Homework 1
 ----------
@@ -38,3 +39,11 @@ In this assignment, you will use the co_sum collective subroutine to sum integer
 ```
 which executes `procedural_fireworks` in 4 images and redirects the standard input to the file `fireworks_intput.txt`.
 - [ ] Bring your instructor a frappe to receive an A for the day.
+
+Homework 3
+----------
+- [ ] Copy the [procedural fireworks solution](src/solutions/homework2/procedural_fireworks) into a new homework3 subdirectory inside [src](src).
+- [ ] Eliminate the `result_image` argument in the copied main program's `co_sum` call.
+- [ ] Refactor the new homework3 main program to replace `co_sum` with a call to a `co_sum_binary` that you will write.
+- [ ] Write `co_sum_binary` as an internal subprogram after the `contains` statement in the new `main` program.  Your `co_sum_binary` will first calcuate the sum and store it on image 1 using a communication pattern that is essentially the reverse of the pattern in yesterday's [co_broadcast_binary code jam](src/code-jams/fortran-2008-test-my-message.f90).
+- [ ] Because the `result_image` argument is not in the new `main` program's `co_sum` call, the resulting sum must be on each images after that image finishes executing `co_sum`.  For this purpose, the last step in your `co_sum_binary` should be to invoke `co_broadcast_binary` from the code jam.  Think carefully about whether any synchronizations are required at the beginning, middle, or end of your `co_sum_binary`.
