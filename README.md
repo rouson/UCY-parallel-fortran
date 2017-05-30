@@ -4,6 +4,7 @@ Code jams and homework exercises for Parallel Programming in Modern Fortran cour
 
 1. [Homework 1](#homework-1)
 2. [Homework 2](#homework-2)
+2. [Homework 3](#homework-3)
 
 Homework 1
 ----------
@@ -38,3 +39,17 @@ In this assignment, you will use the co_sum collective subroutine to sum integer
 ```
 which executes `procedural_fireworks` in 4 images and redirects the standard input to the file `fireworks_intput.txt`.
 - [ ] Bring your instructor a frappe to receive an A for the day.
+
+Homework 3
+----------
+- [ ] Generate a pull request on your repository and merge the latest central repository into yours [central repository](https://github.com/rouson/UCY-parallel-fortran). (Alternatively, you could clone the latest central repository, but you don't have write permissions on it so you won't be able to push your changes, which loses you some GitHub functionality that is only available online.)
+- [ ] Try building the updated/cloned repository with CMake, e.g.
+```bash
+cd UCY-parallel-fortran-<insert-github-user-name>
+mkdir build
+cd build
+FC=caf cmake ..
+make
+```
+- [ ] The resulting build failure will point you to the new Homework 3 [main](src/homework3/fortran2008_procedural_fireworks) program, which is identical to the homework 2 `main` except that the `co_sum_binary` replaces `co_sum` and the corresponding `result_image` argument has been eliminarted.
+- [ ] Follow the instructions below the text "Assignment" in the new [main] program to complete Homework 3.  A completed assignment will cause all tests to pass when you run `ctest` after the above `make`
