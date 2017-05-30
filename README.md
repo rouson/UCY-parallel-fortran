@@ -42,8 +42,14 @@ which executes `procedural_fireworks` in 4 images and redirects the standard inp
 
 Homework 3
 ----------
-- [ ] Copy the [procedural fireworks solution](src/solutions/homework2/procedural_fireworks) into a new homework3 subdirectory inside [src](src).
-- [ ] Eliminate the `result_image` argument in the copied main program's `co_sum` call.
-- [ ] Refactor the new homework3 main program to replace `co_sum` with a call to a `co_sum_binary` that you will write.
-- [ ] Write `co_sum_binary` as an internal subprogram after the `contains` statement in the new `main` program.  Your `co_sum_binary` will first calcuate the sum and store it on image 1 using a communication pattern that is essentially the reverse of the pattern in yesterday's [co_broadcast_binary code jam](src/code-jams/fortran-2008-test-my-message.f90).
-- [ ] Because the `result_image` argument is not in the new `main` program's `co_sum` call, the resulting sum must be on each images after that image finishes executing `co_sum`.  For this purpose, the last step in your `co_sum_binary` should be to invoke `co_broadcast_binary` from the code jam.  Think carefully about whether any synchronizations are required at the beginning, middle, or end of your `co_sum_binary`.
+- [ ] Generate a pull request on your repository and merge the latest central repository into yours [central repository](https://github.com/rouson/UCY-parallel-fortran). (Alternatively, you could clone the latest central repository, but you don't have write permissions on it so you won't be able to push your changes, which loses you some GitHub functionality that is only available online.)
+- [ ] Try building the updated/cloned repository with CMake, e.g.
+```bash
+cd UCY-parallel-fortran-<insert-github-user-name>
+mkdir build
+cd build
+FC=caf cmake ..
+make
+```
+- [ ] The resulting build failure will point you to the new Homework 3 [main](src/homework3/fortran2008_procedural_fireworks) program, which is identical to the homework 2 `main` except that the `co_sum_binary` replaces `co_sum` and the corresponding `result_image` argument has been eliminarted.
+- [ ] Follow the instructions below the text "Assignment" in the new [main] program to complete Homework 3.  A completed assignment will cause all tests to pass when you run `ctest` after the above `make`
