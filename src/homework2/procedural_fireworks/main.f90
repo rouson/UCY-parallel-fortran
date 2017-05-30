@@ -80,12 +80,11 @@ program main
     end associate
   end do march_forward_in_time
 
-
   ! Assignment:
-  ! 1. In a new block labeled physics_test, declare an integer variable image_failed and set it to 
+  ! 1. In a new block labeled integration_test, declare an integer variable image_failed and set it to 
   !     {  0 if .true. is the logical result of the function reference reached_terminal_velocity(x,v,response_time,tolerance)
   !     {  1 otherwise
-  ! 2. Use the co_sum collective subroutine to sum the number of image failures.   
+  ! 2. Use the co_sum collective subroutine to sum the number of image failures, providing the result to image 1 only.   
   ! 3. Error terminate if the sum is non-zero.
   ! 4. Otherwise, print "Test passed."
 
