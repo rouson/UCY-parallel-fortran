@@ -88,5 +88,6 @@ endfunction(add_mpi_test)
 set(tests_root ${CMAKE_CURRENT_BINARY_DIR}/src/tests)
 
 add_mpi_test(homework2_solution procedural-fireworks 4 src/solutions/homework2/procedural_fireworks)
-# add_mpi_test(homework3_solution fortran2008-procedural-fireworks 4 src/homework3/fortran2008_procedural_fireworks)
 add_mpi_test(homework3_solution homework3-solution 4 src/solutions/homework3/fortran2008_procedural_fireworks)
+add_mpi_test(sync_deriv_get sync_deriv_get 4 src/homework4)
+add_mpi_test(sync_deriv_put sync_deriv_put 4 src/homework4)
