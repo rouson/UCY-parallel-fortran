@@ -4,7 +4,8 @@ Code jams and homework exercises for Parallel Programming in Modern Fortran cour
 
 1. [Homework 1](#homework-1)
 2. [Homework 2](#homework-2)
-2. [Homework 3](#homework-3)
+3. [Homework 3](#homework-3)
+4. [Homework 4](#homework-4)
 
 Homework 1
 ----------
@@ -53,3 +54,19 @@ make
 ```
 - [ ] The resulting build failure will point you to the new Homework 3 [main](src/homework3/fortran2008_procedural_fireworks) program, which is identical to the homework 2 `main` except that the `co_sum_binary` replaces `co_sum` and the corresponding `result_image` argument has been eliminarted.
 - [ ] Follow the instructions below the text "Assignment" in the new [main] program to complete Homework 3.  A completed assignment will cause all tests to pass when you run `ctest` after the above `make`
+
+Homework 4
+----------
+- [ ] Build the course archive with CMake as usual:
+```bash
+cd UCY-parallel-fortran
+mkdir build
+cd build
+FC=caf cmake ..
+make
+```
+- [ ] The build fails because it's looking for a missing file: synchronous-derivative-put.f90.  Create the missing file by copying [synchronous-derivative-get.f90](src/homework4/synchronous-derivative-get.f90)
+- [ ] Inside the new file, define an "inbox" coarray to hold incoming boundary data from neighboring images in the executing image's halo.
+- [ ] Replace the "gets" in the `get_halo` block with "puts" to ensure the initiation of communication as soon as the communicated data is ready.
+- [ ] Impose any necessary synchronizations via `sync images`.
+- [ ] Continue building and testing until issuing the command `ctest` reports that all tests pass.
