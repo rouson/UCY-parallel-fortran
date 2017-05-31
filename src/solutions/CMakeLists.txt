@@ -1,5 +1,5 @@
 #Specify all the subdirectories containing codes that produces executable files or libraries:
-set(subdirectories homework1 homework2 homework3)
+set(subdirectories homework1 homework2 homework3 homework4)
 foreach(subdirectory ${subdirectories})
   add_subdirectory(${subdirectory})
 endforeach()
